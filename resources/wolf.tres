@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Opponent" format=3 uid="uid://bngrrjbpw4ux6"]
+
+[ext_resource type="Script" uid="uid://c5n0ybs2ohkgd" path="res://scripts/opponent.gd" id="1_nla7h"]
+
+[resource]
+script = ExtResource("1_nla7h")
+hp = 10
+max_hp = 10
+attack = 2
+metadata/_custom_type_script = "uid://c5n0ybs2ohkgd"

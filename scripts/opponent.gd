@@ -14,3 +14,10 @@ enum Type {
 @export var blocks : int
 @export var type : Type
 
+var valid : bool = true
+
+static var collection : Dictionary[Type, Opponent] = { 
+	Type.WOLF: preload("res://resources/wolf.tres"),
+	Type.CROW: preload("res://resources/crow.tres"),
+	Type.BOAR: preload("res://resources/boar.tres"),
+	}
