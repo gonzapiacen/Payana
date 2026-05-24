@@ -29,4 +29,3 @@ func _disable_player_hand():
 
 func _disable_pass():
 	pass
-
