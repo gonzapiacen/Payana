@@ -14,6 +14,10 @@ config/name="Payana"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://du0ddhjflg533"
 
+[autoload]
+
+InputHandler="*uid://bvw2c0hwgijs1"
+
 [display]
 
 window/size/viewport_width=1920

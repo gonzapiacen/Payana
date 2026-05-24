@@ -10,7 +10,7 @@ func prepare_encounter(encounter: Encounter):
 	
 	card_stacks.deck.shuffle()
 
-func player_turn():
+func start_player_turn():
 	for i in range(0, player.hand_size):
 		if card_stacks.deck.is_empty():
 			if card_stacks.discard.is_empty():
@@ -19,8 +19,16 @@ func player_turn():
 			card_stacks.deck.shuffle()
 		card_stacks.player_hand.push_back(card_stacks.deck.pop_back())
 	
-	# el jugador tiene la oportunidad de elegir carta
-	var picked_card := 
-	
+	InputHandler.enable_player_action()
 
+func play_card(index: int):
+	var card = card_stacks.player_hand[index]
+	if card.cost > player.energy:
+		# TODO play feedback "not enough energy"
+		return
+	player.energy -= card.cost
+	InputHandler.disable_all()
+	for effect in card.effects:
+		effect.effect.call()
+	InputHandler.enable_player_action()
 

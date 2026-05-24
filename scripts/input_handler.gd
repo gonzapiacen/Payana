@@ -1,16 +1,32 @@
 extends Node
-class_name InputHandler
 
-signal hand_card_picked
+func enable_player_action():
+	_enable_player_hand()
+	_enable_pass()
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index
+func disable_all():
+	_disable_pass()
+	_disable_player_hand()
+	_disable_opponent_cards()
 
+func enable_opponent_cards():
+	pass
 
+func _enable_player_hand():
+	pass
 
-func pick_hand_card() -> Card:
-	await hand_card_picked
+func _enable_opponent_cards():
+	pass
 
+func _enable_pass():
+	pass
 
+func _disable_opponent_cards():
+	pass
+
+func _disable_player_hand():
+	pass
+
+func _disable_pass():
+	pass
 

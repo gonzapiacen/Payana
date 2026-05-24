@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Encounter" format=3 uid="uid://c4h7s04qxd25r"]
+
+[ext_resource type="Script" uid="uid://cr086552nttkh" path="res://scripts/encounter.gd" id="1_re1yy"]
+
+[resource]
+script = ExtResource("1_re1yy")
+opponent_list = Array[int]([0, 0])
+metadata/_custom_type_script = "uid://cr086552nttkh"
