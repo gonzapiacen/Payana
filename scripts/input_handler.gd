@@ -29,3 +29,7 @@ func _disable_player_hand():
 
 func _disable_pass():
 	pass
+
+func enable_only_map():
+	# TODO enable map and nodes for player to select next scene
+	pass
