@@ -7,3 +7,17 @@ var energy : int
 var max_energy : int
 var blocks : int
 var hand_size : int
+
+signal died(Player)
+
+func get_damage(damage: int):
+	hp -= damage
+	
+	if !hp:
+		died.emit(self)
+
+func get_heal(life: int):
+	hp = min((hp + life), max_hp)
+
+func add_shield(shield: int):
+	blocks += shield

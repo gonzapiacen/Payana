@@ -16,7 +16,6 @@ func verify_remains(dead_opponent: Opponent):
 	card_stacks.opponent_slots.erase(dead_opponent)
 	if(!card_stacks.opponent_slots.size()):
 		InputHandler.enable_only_map()
-		select_next_node()
 	
 func start_player_turn():
 	InputHandler.disable_all()
@@ -36,7 +35,8 @@ func play_card(index: int, target: int = 0):
 	InputHandler.disable_all()
 	# TODO distinguish between whether the target is the player or an opponent
 	for effect in card.effects:
-		effect.effect.call()
+		#effect.effect.call()
+		effect.effect(player,card_stacks.opponent_slots[target])
 		
 	discard_card(index)
 	
@@ -51,9 +51,6 @@ func draw_cards():
 			card_stacks.discard = []
 			card_stacks.deck.shuffle()
 		card_stacks.player_hand.push_back(card_stacks.deck.pop_back())
-		if !card_stacks.deck:
-			# TODO hide deck
-			pass
 
 func discard_card(index: int = 0):
 	card_stacks.discard.push_back(card_stacks.player_hand.pop_at(index))
@@ -73,7 +70,3 @@ func start_opponent_turn():
 		pass
 
 	start_player_turn()
-
-func select_next_node():
-	# TODO show map and select node
-	pass
