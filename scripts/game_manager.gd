@@ -4,9 +4,19 @@ class_name GameManager
 var card_stacks : CardStacks
 var player : Player
 
+func _ready():
+	prepare_encounter(load("res://resources/encounters/01.tres"))
+	start_player_turn()
+
 func prepare_encounter(encounter: Encounter):
+	
+	card_stacks = CardStacks.new()
+	
+	player = Player.new()
+	player.hand_size = 3
+	
 	for opp in encounter.opponent_list:
-		var opp_instance = Opponent.collection[opp].new()
+		var opp_instance = Opponent.collection[opp].duplicate()
 		card_stacks.opponent_slots.push_back(opp_instance)
 		opp_instance.connect("died", verify_remains.bind(opp_instance))
 	

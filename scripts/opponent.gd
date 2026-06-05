@@ -19,9 +19,9 @@ var valid : bool = true
 signal died(Opponent)
 
 static var collection : Dictionary[Type, Opponent] = { 
-	Type.WOLF: preload("res://resources/opponents/wolf.tres"),
-	Type.CROW: preload("res://resources/opponents/crow.tres"),
-	Type.BOAR: preload("res://resources/opponents/boar.tres"),
+	Type.WOLF: load("res://resources/opponents/wolf.tres"),
+	Type.CROW: load("res://resources/opponents/crow.tres"),
+	Type.BOAR: load("res://resources/opponents/boar.tres"),
 }
 	
 func execute():
