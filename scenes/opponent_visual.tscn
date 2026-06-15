@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://dyx7p4ufe1ggr"]
+
+[ext_resource type="Script" uid="uid://cl025p1b8dmhy" path="res://scripts/opponent_visual.gd" id="1_2rg0q"]
+[ext_resource type="Texture2D" uid="uid://uwtart5ldbmm" path="res://assets/sprites/carta_vacia.png" id="1_8jdbl"]
+[ext_resource type="Texture2D" uid="uid://cjq2xvgeq3cvn" path="res://assets/sprites/dorso_cartas.png" id="2_2rg0q"]
+
+[node name="Opponents" type="Button" unique_id=1529685205]
+custom_minimum_size = Vector2(60, 100)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -50.0
+offset_right = 30.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2rg0q")
+
+[node name="Front" type="TextureRect" parent="." unique_id=674526181]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -50.0
+offset_right = 30.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(30, 50)
+texture = ExtResource("1_8jdbl")
+
+[node name="HP" type="Label" parent="Front" unique_id=882991733]
+layout_mode = 1
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 22.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Damage" type="Label" parent="Front" unique_id=139534752]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -22.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 25.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Image" type="TextureRect" parent="Front" unique_id=944003413]
+clip_contents = true
+custom_minimum_size = Vector2(60, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand_mode = 1
+
+[node name="Back" type="TextureRect" parent="." unique_id=1741845503]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -250.0
+offset_right = -90.0
+offset_bottom = -150.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(150, 250)
+texture = ExtResource("2_2rg0q")
+expand_mode = 1

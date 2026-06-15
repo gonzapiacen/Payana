@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://nr7y7sy2ny1v"]
+
+[ext_resource type="Texture2D" uid="uid://dq5qwjwrebd8h" path="res://assets/sprites/energy_circle.png" id="1_puj0d"]
+[ext_resource type="Texture2D" uid="uid://df4xelg18uhsu" path="res://assets/sprites/shield.png" id="1_u3ihd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_puj0d"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="Status" type="VBoxContainer" unique_id=391257455]
+custom_minimum_size = Vector2(832, 1000)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -416.0
+offset_top = -500.0
+offset_right = 416.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(416, 500)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Shields" type="HBoxContainer" parent="." unique_id=1188642270]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+alignment = 1
+
+[node name="Shield" type="TextureRect" parent="Shields" unique_id=1413606588]
+visible = false
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+texture = ExtResource("1_u3ihd")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="Shield2" type="TextureRect" parent="Shields" unique_id=1536946940]
+visible = false
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+texture = ExtResource("1_u3ihd")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="Shield3" type="TextureRect" parent="Shields" unique_id=1715569639]
+visible = false
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+texture = ExtResource("1_u3ihd")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=2088060258]
+custom_minimum_size = Vector2(832, 128)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_puj0d")
+max_value = 10.0
+step = 1.0
+value = 10.0
+show_percentage = false
+
+[node name="EnergyBar" type="HBoxContainer" parent="." unique_id=871019452]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Energy" type="TextureRect" parent="EnergyBar" unique_id=960547455]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_puj0d")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="Energy2" type="TextureRect" parent="EnergyBar" unique_id=1595709016]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_puj0d")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="Energy3" type="TextureRect" parent="EnergyBar" unique_id=777663793]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_puj0d")
+expand_mode = 2
+stretch_mode = 3

@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://cao7tq51li420"]
+
+[ext_resource type="Script" uid="uid://ct274im2e15av" path="res://scripts/card_visual.gd" id="1_4xisq"]
+[ext_resource type="Resource" uid="uid://d2vegiumg7su" path="res://resources/cards/facon.tres" id="2_oml8l"]
+[ext_resource type="Texture2D" uid="uid://uwtart5ldbmm" path="res://assets/sprites/carta_vacia.png" id="4_oml8l"]
+[ext_resource type="Texture2D" uid="uid://cjq2xvgeq3cvn" path="res://assets/sprites/dorso_cartas.png" id="5_rmpoq"]
+
+[node name="Card" type="Button" unique_id=855736809]
+custom_minimum_size = Vector2(60, 100)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -50.0
+offset_right = 30.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4xisq")
+card = ExtResource("2_oml8l")
+
+[node name="Front" type="TextureRect" parent="." unique_id=1159983612]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -50.0
+offset_right = 30.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(150, 250)
+texture = ExtResource("4_oml8l")
+expand_mode = 1
+
+[node name="Cost" type="Label" parent="Front" unique_id=742398324]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -13.432837
+offset_bottom = 12.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title" type="Label" parent="Front" unique_id=455179097]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.5
+offset_right = 1.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 8
+text = "eso"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Image" type="TextureRect" parent="Front" unique_id=1076678915]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand_mode = 1
+
+[node name="Back" type="TextureRect" parent="." unique_id=361338001]
+texture_filter = 1
+custom_minimum_size = Vector2(60, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -50.0
+offset_right = 30.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(150, 250)
+texture = ExtResource("5_rmpoq")
+expand_mode = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
