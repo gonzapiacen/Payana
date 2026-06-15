@@ -14,11 +14,21 @@ config/name="Payana"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://du0ddhjflg533"
 
+[autoload]
+
+GameManager="*uid://b3roaedhq6l5j"
+InputHandler="*uid://bvw2c0hwgijs1"
+
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
+window/stretch/scale=3.0
+
+[dotnet]
+
+project/assembly_name="Payana"
 
 [physics]
 

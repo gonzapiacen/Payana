@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Opponent" format=3 uid="uid://capre4gjuiq2u"]
+
+[ext_resource type="Texture2D" uid="uid://kq31ci2gux0i" path="res://assets/sprites/cuervo.png" id="1_120ug"]
+[ext_resource type="Script" uid="uid://c5n0ybs2ohkgd" path="res://scripts/opponent.gd" id="1_qhmwq"]
+
+[resource]
+script = ExtResource("1_qhmwq")
+picture = ExtResource("1_120ug")
+hp = 7
+max_hp = 7
+attack = 1
+type = 1
+metadata/_custom_type_script = "uid://c5n0ybs2ohkgd"
