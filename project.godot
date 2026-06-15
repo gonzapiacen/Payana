@@ -17,12 +17,14 @@ config/icon="uid://du0ddhjflg533"
 [autoload]
 
 InputHandler="*uid://bvw2c0hwgijs1"
+GameManager="*uid://b3roaedhq6l5j"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
+window/stretch/scale=3.0
 
 [dotnet]
 

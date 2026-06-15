@@ -9,6 +9,11 @@ var blocks : int
 var hand_size : int
 
 signal died(Player)
+signal update_protection(int)
+
+func add_protection(amount: int):
+	blocks = min(blocks + amount, 3)
+	update_protection.emit(blocks)
 
 func get_damage(damage: int):
 	hp -= damage

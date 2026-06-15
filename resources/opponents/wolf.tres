@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="Opponent" format=3 uid="uid://bngrrjbpw4ux6"]
 
+[ext_resource type="Texture2D" uid="uid://bvmam05jrqgi" path="res://assets/sprites/lobo.png" id="1_ho4lq"]
 [ext_resource type="Script" uid="uid://c5n0ybs2ohkgd" path="res://scripts/opponent.gd" id="1_nla7h"]
 
 [resource]
 script = ExtResource("1_nla7h")
+picture = ExtResource("1_ho4lq")
 hp = 10
 max_hp = 10
 attack = 2

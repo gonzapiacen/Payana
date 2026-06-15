@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="Opponent" format=3 uid="uid://ds6ws64kpfesf"]
 
 [ext_resource type="Script" uid="uid://c5n0ybs2ohkgd" path="res://scripts/opponent.gd" id="1_35xtd"]
+[ext_resource type="Texture2D" uid="uid://bex8lj1t2ktwl" path="res://assets/sprites/jabali.png" id="1_ksfys"]
 
 [resource]
 script = ExtResource("1_35xtd")
+picture = ExtResource("1_ksfys")
 hp = 15
 max_hp = 15
 attack = 2
