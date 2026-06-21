@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_re1yy")
-opponent_list = Array[int]([1, 2])
+opponent_list = Array[int]([1, 0, 1])
 metadata/_custom_type_script = "uid://cr086552nttkh"

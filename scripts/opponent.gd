@@ -28,10 +28,16 @@ static var collection : Dictionary[Type, Opponent] = {
 	
 func execute():
 	# TODO execute action
-	pass
+	match type:
+		Type.WOLF:
+			print("AUUUUUUUUUUUU")
+		Type.CROW:
+			print("CHAJA CHAJA")
+		Type.BOAR:
+			print("OINK OINK")
 
 func get_damage(damage: int):
-	hp -= damage
+	hp = max(hp - damage,0)
 	if !hp:
 		died.emit(self)
 	else:

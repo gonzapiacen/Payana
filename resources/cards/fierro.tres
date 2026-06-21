@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://cuaa1kxitmjx5"]
+
+[ext_resource type="Script" uid="uid://bqbb7ft5gjbho" path="res://scripts/effects/effect.gd" id="1_kjj2m"]
+[ext_resource type="Script" uid="uid://ukg5trs6od3x" path="res://scripts/effects/effect_damage.gd" id="2_wbrr8"]
+[ext_resource type="Texture2D" uid="uid://bup8scnrmolgj" path="res://assets/sprites/fierro.png" id="3_kjj2m"]
+[ext_resource type="Script" uid="uid://dc5us1o6wbex6" path="res://scripts/card_info.gd" id="4_ktj2n"]
+[ext_resource type="Script" uid="uid://sri1ksuxj8ka" path="res://scripts/card.gd" id="5_3ihep"]
+
+[sub_resource type="Resource" id="Resource_i4e7d"]
+script = ExtResource("2_wbrr8")
+amount = 7
+metadata/_custom_type_script = "uid://ukg5trs6od3x"
+
+[sub_resource type="Resource" id="Resource_sqyd6"]
+script = ExtResource("4_ktj2n")
+name = "Fierro"
+description = "Pinto fierro"
+metadata/_custom_type_script = "uid://dc5us1o6wbex6"
+
+[resource]
+script = ExtResource("5_3ihep")
+image = ExtResource("3_kjj2m")
+cost = 3
+effects = Array[ExtResource("1_kjj2m")]([SubResource("Resource_i4e7d")])
+info = SubResource("Resource_sqyd6")
+metadata/_custom_type_script = "uid://sri1ksuxj8ka"

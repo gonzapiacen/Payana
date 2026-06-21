@@ -18,6 +18,8 @@ offset_right = 30.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(30, 50)
+flat = true
 script = ExtResource("1_4xisq")
 card = ExtResource("2_oml8l")
 
@@ -34,7 +36,8 @@ offset_right = 30.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(150, 250)
+scale = Vector2(1e-05, 1)
+pivot_offset = Vector2(30, 50)
 texture = ExtResource("4_oml8l")
 expand_mode = 1
 
@@ -93,7 +96,7 @@ offset_right = 30.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(150, 250)
+pivot_offset = Vector2(30, 50)
 texture = ExtResource("5_rmpoq")
 expand_mode = 1
 

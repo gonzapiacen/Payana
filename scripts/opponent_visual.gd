@@ -3,7 +3,10 @@ class_name OpponentVisual
 
 @export var opponent: Opponent
 
-signal clicked(Opponent)
+signal clicked(OpponentVisual)
+
+func _ready():
+	pressed.connect(_selected)
 
 func set_info(_opponent: Opponent):
 	opponent = _opponent
@@ -11,7 +14,5 @@ func set_info(_opponent: Opponent):
 	$Front/Damage.text = str(opponent.attack)
 	$Front/Image.texture = opponent.picture
 
-func _on_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			clicked.emit(self)
+func _selected():
+	clicked.emit(self)
