@@ -7,6 +7,7 @@ signal move_card_hand_to_discard(Card)
 
 signal opponent_in_field(Opponent,int)
 
+signal no_energy
 signal update_energy(Player)
 
 signal delete_enemy(Opponent)
@@ -94,7 +95,8 @@ func start_player_turn():
 func enough_energy(card:Card) -> bool:
 	var can_play = card.cost <= player.energy
 	if(!can_play):
-		print("I have no energy to do that...")
+		no_energy.emit("I have no energy to do that")
+		#print("I have no energy to do that...")
 	
 	return can_play
 

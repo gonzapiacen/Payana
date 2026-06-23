@@ -6,7 +6,7 @@ var visual_opponent_scene = preload("res://scenes/opponent_visual.tscn")
 
 @onready var pass_turn_button = $PassButton
 
-signal target_selected(OpponentVisual)
+signal target_selected(Variant)
 #signal change_turn
 
 #var tween : Tween
@@ -19,6 +19,7 @@ func _ready():
 	GameManager.move_card_hand_to_discard.connect(_move_card_hand_to_discard)
 	#GameManager.move_card_hand_to_field.connect(_move_card_hand_to_field)
 	GameManager.opponent_in_field.connect(_put_opponent_in_field)
+	GameManager.no_energy.connect(_show_alert)
 	GameManager.update_energy.connect(_update_energy_player)
 	GameManager.player.update_protection.connect(_update_shield_player)
 	GameManager.delete_enemy.connect(_delete_enemy)
@@ -57,7 +58,7 @@ func _move_card_deck_to_hand(_card: Card, new_size_deck: int):
 				$Deck.visible = false
 				
 			card_to_move.reparent(slot)
-			tween.tween_property(card_to_move,"position",Vector2(0,0),.5)
+			tween.tween_property(card_to_move,"position",Vector2(0,0),.25)
 			#card_to_move.position = Vector2(0,0)
 			tween.tween_property(card_to_move.get_node("Back"),"scale",Vector2(0,1),.125)
 			tween.tween_property(card_to_move.get_node("Front"),"scale",Vector2(1,1),.125)
@@ -68,6 +69,13 @@ func _move_card_deck_to_hand(_card: Card, new_size_deck: int):
 func _update_shield_player(amount: int):
 	for i in range(amount):
 		$Status/Shields.get_children()[i].visible = true
+		
+func _show_alert(alert_desc: String):
+	var tween = create_tween()
+	$Alert.text = alert_desc
+	tween.tween_property($Alert,"modulate:a",1,1)
+	tween.tween_property($Alert,"modulate:a",0,2)
+	await tween.finished
 
 func _update_energy_player(player: Player):
 	for i in range(player.energy):
@@ -137,14 +145,35 @@ func _put_opponent_in_field(opp_to_put: Opponent):
 	visual_opponent_instance.clicked.connect(_on_target_selected)
 
 func _selected_card(instantiated_card: CardVisual):
-	for slot in range($Hand.get_children().size()):
-		if($Hand.get_children()[slot].get_child(0) && $Hand.get_children()[slot].get_child(0) == instantiated_card):
+	
+	for slot in $Hand.get_children():
+		#if($Hand.get_children()[slot].get_child(0) && $Hand.get_children()[slot].get_child(0) == instantiated_card):
+		if(slot.get_child(0) && slot.get_child(0) == instantiated_card):
 			if(!GameManager.enough_energy(instantiated_card.card)):
 				break
 			if(GameManager.needs_a_target(instantiated_card.card)):
-				var target = await select_target()
-				#GameManager.play_card(slot - no_cards,target)
-				GameManager.play_card(instantiated_card.card,target.opponent)
+				instantiated_card.clicked.disconnect(_selected_card)
+				instantiated_card.clicked.connect(_on_target_selected)
+				var target = await select_target(instantiated_card)
+				if(target == instantiated_card):
+					print("Cancel card to play")
+					instantiated_card.clicked.connect(_selected_card)
+					instantiated_card.clicked.disconnect(_on_target_selected)
+					for hand_slot in $Hand.get_children():
+						var card_in_hand = hand_slot.get_child(0)
+						if(card_in_hand):
+							card_in_hand.modulate.a = 1
+							card_in_hand.clicked.connect(_selected_card)
+					pass_turn_button.disabled = false
+				else:
+					for hand_slot in $Hand.get_children():
+						var card_in_hand = hand_slot.get_child(0)
+						if(card_in_hand):
+							card_in_hand.modulate.a = 1
+							card_in_hand.clicked.connect(_selected_card)
+					GameManager.play_card(instantiated_card.card,target.opponent)
+					pass_turn_button.disabled = false
+				break
 			else:
 				#GameManager.play_card(slot - no_cards)
 				GameManager.play_card(instantiated_card.card)
@@ -201,21 +230,39 @@ func _put_discard_in_deck(_card: Card):
 	visual_card_to_move.reparent($Deck/Cards)
 	set_size_deck($Deck/Cards.get_child_count())
 		
-func _on_target_selected(opp_visual: OpponentVisual):
-	target_selected.emit(opp_visual)
+#func _on_target_selected(opp_visual: OpponentVisual):
+	#target_selected.emit(opp_visual)
 	
-func select_target() -> OpponentVisual:
+func _on_target_selected(card_visual: Variant):
+	target_selected.emit(card_visual)
+	
+func select_target(card_to_play: CardVisual) -> Variant:
+	card_to_play.scale = Vector2(1.2,1.2)
 	for slot in $OpponentField.get_children():
 		var opponent_to_select = slot.get_child(0)
 		if(opponent_to_select):
 			opponent_to_select.scale = Vector2(1.2,1.2)
 			
+	for slot in $Hand.get_children():
+		var card_in_hand = slot.get_child(0)
+		if(card_in_hand && card_in_hand != card_to_play):
+			print("deshabilitando carta en mano")
+			card_in_hand.modulate.a = 0.2
+			card_in_hand.clicked.disconnect(_selected_card)
+			
+	pass_turn_button.disabled = true
+			
 	print("Select the target...")
 	var selected = await target_selected
 	
-	for pos in $OpponentField.get_children().size():
-		var opponent_to_select = $OpponentField.get_children()[pos].get_child(0)
+	#for pos in $OpponentField.get_children().size():
+	for opp in $OpponentField.get_children():
+		var opponent_to_select = opp.get_child(0)
 		if(opponent_to_select):
 			opponent_to_select.scale = Vector2(1,1)
-			
+	
+	if(selected == card_to_play):
+		card_to_play.scale = Vector2.ONE
+		return card_to_play
+	
 	return selected
